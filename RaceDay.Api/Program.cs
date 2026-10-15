@@ -12,6 +12,9 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler =
             System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
+// Registers the RaceDay database context with dependency injection.
+// The connection string is read from appsettings.json.
+// SQL Server is used as the database provider.
 
 builder.Services.AddDbContext<RaceDayDbContext>(o=>o.UseSqlServer(builder.Configuration.GetConnectionString("RaceDayDb")));
 builder.Services.AddScoped<IImageStorage,AzureImageStorage>();
