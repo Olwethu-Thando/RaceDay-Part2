@@ -1,3 +1,11 @@
+
+// This file contains helper methods and services used by the RaceDay API.
+// The Helpers class retrieves the logged-in user's ID and validates race
+// events, categories and race results before they are processed. The
+// IImageStorage interface defines the image upload functionality, while
+// AzureImageStorage uploads images to Azure Blob Storage and returns the
+// image URL. The ImageRules class checks that uploaded images meet the
+// required file size, file extension and content type restrictions.
 using System.Security.Claims;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
