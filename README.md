@@ -205,7 +205,7 @@ Private Azure Blob containers require an appropriate access mechanism, such as s
 
 ## Demonstration Video
 
-**YouTube demonstration link:** To be added.
+**YouTube demonstration link:** https://www.youtube.com/watch?v=hQnRQkn217Y
 
 The demonstration will cover:
 
