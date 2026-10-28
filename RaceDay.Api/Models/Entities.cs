@@ -1,11 +1,3 @@
-// This file defines the main data models used in the RaceDay application.
-// Each class represents a database table and contains properties that
-// store information about users, organisers, participants, race events,
-// categories, enrolments and race results. Data annotations specify
-// primary keys and maximum field lengths, while navigation properties
-// define relationships between the models. Default values are provided
-// for dates and enrolment status, and nullable properties allow optional
-// information such as contact details, profile pictures and results.
 using System.ComponentModel.DataAnnotations;
 namespace RaceDay.Api.Models;
 public class User { public int UserId {get;set;} [MaxLength(150)] public string Email {get;set;}=""; [MaxLength(255)] public string PasswordHash {get;set;}=""; [MaxLength(20)] public string Role {get;set;}=""; public DateTime CreatedDate {get;set;}=DateTime.UtcNow; public Organiser? Organiser {get;set;} public Participant? Participant {get;set;} }

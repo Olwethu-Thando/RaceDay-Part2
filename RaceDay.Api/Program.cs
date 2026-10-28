@@ -5,17 +5,7 @@ using Microsoft.OpenApi.Models;
 using RaceDay.Api.Data;
 using RaceDay.Api.Services;
 var builder=WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler =
-            System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-    });
-// Registers the RaceDay database context with dependency injection.
-// The connection string is read from appsettings.json.
-// SQL Server is used as the database provider.
-
+builder.Services.AddControllers();
 builder.Services.AddDbContext<RaceDayDbContext>(o=>o.UseSqlServer(builder.Configuration.GetConnectionString("RaceDayDb")));
 builder.Services.AddScoped<IImageStorage,AzureImageStorage>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o=>{o.Cookie.Name="RaceDay.Session";o.Cookie.HttpOnly=true;o.Cookie.SecurePolicy=CookieSecurePolicy.SameAsRequest;o.Cookie.SameSite=SameSiteMode.Lax;o.ExpireTimeSpan=TimeSpan.FromHours(8);o.SlidingExpiration=true;o.Events.OnRedirectToLogin=c=>{c.Response.StatusCode=401;return Task.CompletedTask;};o.Events.OnRedirectToAccessDenied=c=>{c.Response.StatusCode=403;return Task.CompletedTask;};});
